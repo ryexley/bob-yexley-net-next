@@ -5,23 +5,42 @@
   "scripts": {
     "dev": "next dev --port 7777",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "yarn run eslint && yarn run mdlint",
+    "eslint": "eslint src next.config.js --ext js,jsx",
+    "mdlint": "markdownlint \"**/*.{md,mdx}\" --ignore \"**/node_modules/**\" --ignore \"**/CHANGELOG.md\""
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^10.0.7",
+    "gray-matter": "^4.0.2",
     "next": "10.0.7",
+    "next-mdx-remote": "^2.1.3",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "walk-sync": "^2.2.0"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.13.8",
+    "@babel/eslint-plugin": "^7.13.0",
     "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^7.20.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.5",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-mdx": "^1.9.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "markdownlint": "^0.23.1",
+    "markdownlint-cli": "^0.26.0",
     "postcss": "^8.2.6",
     "postcss-custom-properties": "^11.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^14.0.0",
     "postcss-nested": "^5.0.4",
     "postcss-preset-env": "^6.7.0",
+    "prop-types": "^15.7.2",
     "tailwindcss": "^2.0.3"
   }
 }
