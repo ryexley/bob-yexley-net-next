@@ -1,21 +1,13 @@
 module.exports = {
-  plugins: [
-    "postcss-flexbugs-fixes",
-    [
-      "postcss-preset-env", {
-        autoprefixer: {
-          flexbox: "no-2009"
-        },
-        stage: 3,
-        features: {
-          "custom-properties": false
-        }
-      }
-    ],
-    "postcss-import",
-    "tailwindcss",
-    "postcss-nested",
-    "postcss-custom-properties",
-    "autoprefixer"
-  ]
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {
+      "overrideBrowserslist": [
+        ">0.3%",
+        "not ie 11",
+        "not dead",
+        "not op_mini all"
+      ]
+    }
+  }
 }

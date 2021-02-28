@@ -1,0 +1,11 @@
+@import "modules/layout";
+
+.container {
+  margin: 0 auto;
+}
+
+@media all and (min-width: $bp-xlarge) {
+  .container {
+    max-width: $bp-xlarge;
+  }
+}

@@ -1,9 +1,12 @@
 import PropTypes from "prop-types"
+import { Container } from "@/components/container"
 
 export function Layout({ children }) {
   return (
     <main>
-      {children}
+      <Container>
+        {children}
+      </Container>
     </main>
   )
 }
