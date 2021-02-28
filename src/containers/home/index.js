@@ -1,13 +1,14 @@
 import PropTypes from "prop-types"
-import Head from "next/head"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
+import { Title } from "@/components/title"
 
 export function Home({ posts }) {
+  const t = useTranslations("containers.home")
+
   return (
     <>
-      <Head>
-        <title>bob.yexley.net / next</title>
-      </Head>
+      <Title pageTitle={t("pageTitle")} />
       <h1>bob.yexley.net / next</h1>
       {posts.map(post => (
         <div key={post.slug}>
