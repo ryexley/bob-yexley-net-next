@@ -4,7 +4,6 @@ import PropTypes from "prop-types"
 import { NextIntlProvider, IntlErrorCode } from "next-intl"
 import { getTranslations } from "@/lang"
 import { Layout } from "@/containers/layout"
-import { favicon } from "@/util/favicon"
 
 function onIntlError(error) {
   if (error.code === IntlErrorCode.MISSING_MESSAGE) {
@@ -22,6 +21,13 @@ function getMessageFallback({ namespace, key, error }) {
   }
 }
 
+/* eslint-disable max-len */
+const headContentLinks = {
+  favicon: "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👽</text></svg>",
+  googleFonts: "https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+}
+/* eslint-enable max-len */
+
 export function App({
   Component,
   pageProps,
@@ -33,7 +39,13 @@ export function App({
       <Head>
         <link
           rel="icon"
-          href={favicon} />
+          href={headContentLinks.favicon} />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com" />
+        <link
+          rel="stylesheet"
+          href={headContentLinks.googleFonts} />
       </Head>
       <Layout>
         <NextIntlProvider

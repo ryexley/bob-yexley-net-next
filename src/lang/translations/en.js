@@ -2,7 +2,8 @@ const siteTitle = "bob.yexley.net"
 
 export const translations = {
   shared: {
-    siteTitle
+    siteTitle,
+    siteSubTitle: "software development, sports, the outdoors, faith, life..."
   },
   components: {
     title: {
@@ -14,6 +15,7 @@ export const translations = {
       siteTitle
     },
     home: {
+      siteTitle,
       pageTitle: "Home (next)"
     }
   },
