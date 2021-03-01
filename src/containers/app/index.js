@@ -1,3 +1,4 @@
+import React from "react"
 import NextApp from "next/app"
 import Head from "next/head"
 import PropTypes from "prop-types"
@@ -6,6 +7,17 @@ import { Provider } from "react-redux"
 import { createStore } from "@/store"
 import { getTranslations } from "@/lang"
 import { Layout } from "@/containers/layout"
+import { withWindow } from "@/util"
+
+withWindow(window => {
+  if (process.env.NODE_ENV !== "production") {
+    /* eslint-disable global-require */
+    const ReactDOM = require("react-dom")
+    const axe = require("@axe-core/react")
+    /* eslint-enable global-require */
+    axe(React, ReactDOM, 1000)
+  }
+})
 
 function onIntlError(error) {
   if (error.code === IntlErrorCode.MISSING_MESSAGE) {

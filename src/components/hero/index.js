@@ -11,7 +11,8 @@ const defaultState = {
   backgroundImageOffset: 0,
   titleOffset: 0,
   titleOpacity: 1,
-  scrollHintOpacity: 1
+  scrollHintOpacity: 1,
+  calculatedBlur: 0
 }
 
 export function Hero({
@@ -55,12 +56,15 @@ export function Hero({
         const { pageYOffset } = window
         const calculatedTitleOpacity = ((100 - (pageYOffset * 0.085)) / 100)
         const calculatedScrollHintOpacity = ((100 - (pageYOffset * 0.15)) / 100)
+        const calculatedBlur = 2
+        // TODO: calculate blur between 0 and 20px
 
         setState(() => ({
           backgroundImageOffset: (pageYOffset * 0.25),
           titleOffset: -(pageYOffset * 0.4),
           titleOpacity: (calculatedTitleOpacity > 0) ? calculatedTitleOpacity : 0,
-          scrollHintOpacity: (calculatedScrollHintOpacity > 0) ? calculatedScrollHintOpacity : 0
+          scrollHintOpacity: (calculatedScrollHintOpacity > 0) ? calculatedScrollHintOpacity : 0,
+          calculatedBlur
         }))
       })
     })
@@ -70,12 +74,14 @@ export function Hero({
     backgroundImageOffset,
     titleOffset,
     titleOpacity,
-    scrollHintOpacity
+    scrollHintOpacity,
+    calculatedBlur
   } = state
 
   const heroInlineStyles = {
     backgroundImage: `url(${settings.siteHeroImage})`,
     backgroundPositionY: backgroundImageOffset,
+    // filter: `blur(${calculatedBlur}px)`,
     marginBottom,
     marginLeft: `-${marginLeft}`,
     marginRight: `-${marginRight}`,

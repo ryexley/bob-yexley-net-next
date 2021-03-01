@@ -1,0 +1,23 @@
+@import "modules/layout";
+
+$small: 1.75rem;
+$large: 3rem;
+
+.menu-toggle {
+  @apply fill-current;
+  @apply text-white;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 0.25rem;
+  height: $small;
+  padding: 0.25rem;
+  transition: all 250ms ease-in-out;
+  width: $small;
+}
+
+.menu-toggle--large {
+  height: $large;
+  padding: 0.5rem;
+  width: $large;
+}
+
+@media all and (min-width: $bp-large) {}

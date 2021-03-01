@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react"
 import { useDispatch } from "react-redux"
 import PropTypes from "prop-types"
 import { useSelector } from "react-redux"
+import { Icons } from "@/components/icon"
 import { Header } from "@/components/header"
 import { layoutMounted } from "@/store/app/actions"
 import { computedLayout } from "@/store/app/selectors"
@@ -44,6 +45,7 @@ export function Layout({ children }) {
 
   return (
     <>
+      <Icons />
       <Header />
       <main
         ref={mainContent}

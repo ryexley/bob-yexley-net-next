@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react"
 import { useDispatch } from "react-redux"
 import Link from "next/link"
 import clsx from "clsx"
+import { MenuToggle } from "@/components/menu-toggle"
 import { settings } from "@/settings"
 import { headerMounted } from "@/store/app/actions"
 import { withWindow } from "@/util"
@@ -11,7 +12,7 @@ export function Header() {
   const header = useRef()
   const sensor = useRef("100px")
   const dispatch = useDispatch()
-  const [showSmallHeader, setShowSmallHeader] = useState(false)
+  const [scrolledPastSensor, setScrolledPastSensor] = useState(false)
 
   useEffect(() => {
     sensor.current = header.current.clientHeight
@@ -43,13 +44,17 @@ export function Header() {
     withWindow(window => {
       window.requestAnimationFrame(() => {
         const { pageYOffset } = window
-        setShowSmallHeader(pageYOffset > sensor.current)
+        setScrolledPastSensor(pageYOffset > sensor.current)
       })
     })
   }
 
   const avatarClasses = clsx(styles.avatar, {
-    small: showSmallHeader
+    [styles["avatar--small"]]: scrolledPastSensor
+  })
+
+  const subtitleClasses = clsx(styles.subtitle, {
+    [styles["subtitle--hidden"]]: scrolledPastSensor
   })
 
   return (
@@ -62,12 +67,14 @@ export function Header() {
             src={settings.avatar}
             alt={settings.siteTitle}
             className={avatarClasses} />
-          <div className={styles.text}>
-            <h1>{settings.siteTitle}</h1>
-            <h2>{settings.siteSubtitle}</h2>
+          <div className={styles.headings}>
+            <div className={styles.title}>{settings.siteTitle}</div>
+            <div className={subtitleClasses}>{settings.siteSubtitle}</div>
           </div>
         </a>
       </Link>
+      <MenuToggle
+        variant={scrolledPastSensor ? "small" : "large"} />
     </header>
   )
 }

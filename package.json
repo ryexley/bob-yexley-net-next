@@ -28,6 +28,7 @@
     "walk-sync": "^2.2.0"
   },
   "devDependencies": {
+    "@axe-core/react": "^4.1.1",
     "@babel/eslint-parser": "^7.13.8",
     "@babel/eslint-plugin": "^7.13.0",
     "autoprefixer": "^10.2.4",

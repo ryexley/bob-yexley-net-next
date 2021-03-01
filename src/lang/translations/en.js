@@ -8,6 +8,12 @@ export const translations = {
   components: {
     title: {
       pageTitle: `{pageTitle} / ${siteTitle}`
+    },
+    menuToggle: {
+      ariaLabel: "toggle menu"
+    },
+    scrollHint: {
+      ariaLabel: "scroll to content"
     }
   },
   containers: {
