@@ -23,7 +23,11 @@ export function Header() {
       )
     })
 
-    dispatch(headerMounted(header.current.clientHeight))
+    dispatch(headerMounted({
+      header: {
+        height: `${header.current.clientHeight}px`
+      }
+    }))
 
     return () => {
       withWindow(window => {

@@ -1,5 +1,11 @@
-export const appState = ({ app }) => {
-  const { headerHeight } = app
+export const computedLayout = ({ app }) => {
+  const {
+    header,
+    mainContent
+  } = app
 
-  return { headerHeight }
+  return {
+    header,
+    mainContent
+  }
 }

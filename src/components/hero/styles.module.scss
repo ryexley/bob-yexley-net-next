@@ -1,4 +1,5 @@
 @import "modules/colors";
+@import "modules/layout";
 
 .hero {
   align-items: center;
@@ -8,6 +9,7 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  margin-left: -$main-content-margin;
   overflow: hidden;
   padding: 2.5rem;
 

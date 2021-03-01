@@ -6,3 +6,9 @@ $bp-medium: 48rem; /* 768px ( / 16 ) */
 $bp-mediumlarge: 60rem; /* 960px ( / 16 ) */
 $bp-large: 64rem; /* 1024px ( / 16 ) */
 $bp-xlarge: 80rem; /* 1280px ( / 16 ) */
+
+$main-content-margin: 1rem;
+
+@media all and (min-width: $bp-large) {
+  $main-content-margin: 2rem;
+}

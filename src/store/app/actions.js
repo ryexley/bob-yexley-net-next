@@ -1,6 +1,13 @@
-export function headerMounted(height) {
+export function headerMounted({ header }) {
   return {
     type: "app:headerMounted",
-    height
+    header
+  }
+}
+
+export function layoutMounted({ mainContent }) {
+  return {
+    type: "app:mainContentMounted",
+    mainContent
   }
 }

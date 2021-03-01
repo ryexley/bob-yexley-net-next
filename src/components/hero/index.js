@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import PropTypes from "prop-types"
 import { ScrollHint } from "@/components/scroll-hint"
 import { settings } from "@/settings"
-import { appState } from "@/store/app/selectors"
+import { computedLayout } from "@/store/app/selectors"
 import { withWindow } from "@/util"
 import styles from "./styles.module.scss"
 
@@ -20,7 +20,16 @@ export function Hero({
   onScrollHintClick
 }) {
   const [state, setState] = useState(defaultState)
-  const { headerHeight } = useSelector(appState)
+  const {
+    header: {
+      height: headerHeight
+    },
+    mainContent: {
+      marginBottom,
+      marginLeft,
+      marginRight
+    }
+  } = useSelector(computedLayout)
 
   useEffect(() => {
     withWindow(window => {
@@ -67,7 +76,10 @@ export function Hero({
   const heroInlineStyles = {
     backgroundImage: `url(${settings.siteHeroImage})`,
     backgroundPositionY: backgroundImageOffset,
-    marginTop: `${headerHeight * -1}px`,
+    marginBottom,
+    marginLeft: `-${marginLeft}`,
+    marginRight: `-${marginRight}`,
+    marginTop: `calc(-${headerHeight} + -${marginBottom})`,
     minHeight: (variant === "full") ? "100vh" : "50vh"
   }
 

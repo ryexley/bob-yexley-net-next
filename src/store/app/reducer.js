@@ -1,17 +1,32 @@
 import { reducer } from "@/store/reducer"
 
 const defaultState = {
-  headerHeight: 0
+  header: {
+    height: 0
+  },
+  mainContent: {
+    marginBottom: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    marginTop: 0
+  }
 }
 
 export const app = reducer({
   defaultState,
 
   handlers: {
-    "app:headerMounted"(state, { height }) {
+    "app:headerMounted"(state, { header }) {
       return {
         ...state,
-        headerHeight: height
+        header
+      }
+    },
+
+    "app:mainContentMounted"(state, { mainContent }) {
+      return {
+        ...state,
+        mainContent
       }
     }
   }
