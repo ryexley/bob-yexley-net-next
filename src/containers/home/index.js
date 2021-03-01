@@ -1,3 +1,4 @@
+import { useRef } from "react"
 import PropTypes from "prop-types"
 import Link from "next/link"
 import { useTranslations } from "next-intl"
@@ -8,12 +9,24 @@ import styles from "./styles.module.scss"
 export function Home({ posts }) {
   const t = useTranslations("containers.home")
   const st = useTranslations("shared")
+  const mainContent = useRef()
+
+  const scrollHintClick = () => {
+    mainContent.current.scrollIntoView({
+      block: "start",
+      behavior: "smooth"
+    })
+  }
 
   return (
     <>
       <Title pageTitle={t("pageTitle")} />
-      <Hero title={st("siteSubTitle")} />
-      <section className={styles["main-content"]}>
+      <Hero
+        title={st("siteSubTitle")}
+        onScrollHintClick={scrollHintClick} />
+      <section
+        className={styles["main-content"]}
+        ref={mainContent}>
         {posts.map(post => (
           <div key={post.slug}>
             <Link href="/[slug]" as={`/${post.slug}`}>

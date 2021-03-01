@@ -13,6 +13,7 @@
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^10.0.7",
+    "clsx": "^1.1.1",
     "gray-matter": "^4.0.2",
     "next": "10.0.7",
     "next-intl": "^1.3.3",

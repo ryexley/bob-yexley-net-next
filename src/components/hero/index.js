@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 import PropTypes from "prop-types"
-import styles from "./styles.module.scss"
+import { ScrollHint } from "@/components/scroll-hint"
 import { settings } from "@/settings"
 import { withWindow } from "@/util"
+import styles from "./styles.module.scss"
 
 const defaultState = {
   backgroundImageOffset: 0,
@@ -13,7 +14,8 @@ const defaultState = {
 
 export function Hero({
   variant,
-  title
+  title,
+  onScrollHintClick
 }) {
   const [state, setState] = useState(defaultState)
 
@@ -70,18 +72,26 @@ export function Hero({
     opacity: titleOpacity
   }
 
+  const scrollHintInlineStyles = {
+    opacity: scrollHintOpacity
+  }
+
   return (
     <div
       className={styles.hero}
       style={heroInlineStyles}>
       <h1 style={titleInlineStyles}>{title}</h1>
+      <ScrollHint
+        inlineStyle={scrollHintInlineStyles}
+        onClick={onScrollHintClick} />
     </div>
   )
 }
 
 Hero.propTypes = {
   variant: PropTypes.oneOf(["full", "half"]),
-  title: PropTypes.string
+  title: PropTypes.string,
+  onScrollHintClick: PropTypes.func
 }
 
 Hero.defaultProps = {

@@ -1,0 +1,83 @@
+@import "modules/layout";
+
+$size: 4rem;
+
+.container {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  bottom: 4rem;
+  cursor: pointer;
+  display: none;
+  height: $size;
+  left: calc(50% - 2rem);
+  position: absolute;
+  width: $size;
+  z-index: 4;
+}
+
+.mouse-hint {
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  box-sizing: border-box;
+  filter: inherit;
+  height: 2.25rem;
+  left: calc(50% - 0.6875rem);
+  position: absolute;
+  top: calc(50% - 1.125rem);
+  transition: opacity .5s ease;
+  width: 1.375rem;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+
+  .scroll {
+    animation: scroll-hint-animation 2s linear infinite;
+    background: white;
+    border-radius: 50%;
+    filter: inherit;
+    height: 0.5rem;
+    left: 0.3125rem;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 0.5rem;
+    top: 0.3125rem;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+}
+
+@media all and (min-width: $bp-smallmedium) {
+  .container {
+    display: block;
+    bottom: 10rem;
+  }
+}
+
+@media all and (min-width: $bp-large) {
+  .container {
+    display: block;
+    bottom: 4rem;
+  }
+}
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-hint-animation {
+  60% {
+    opacity: 0.5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  }
+  100% {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    transform: translateY(14px);
+  }
+}
