@@ -19,28 +19,36 @@ export function Hero({
 
   useEffect(() => {
     withWindow(window => {
-      window.addEventListener("scroll", parallaxShift)
+      window.addEventListener(
+        "scroll",
+        parallaxShift
+      )
     })
 
     return () => {
       withWindow(window => {
-        window.removeEventListener("scroll", parallaxShift)
+        window.removeEventListener(
+          "scroll",
+          parallaxShift
+        )
       })
     }
-  }, [])
+  })
 
   const parallaxShift = () => {
     withWindow(window => {
-      const { pageYOffset } = window
-      const calculatedTitleOpacity = ((100 - (pageYOffset * 0.085)) / 100)
-      const calculatedScrollHintOpacity = ((100 - (pageYOffset * 0.15)) / 100)
+      window.requestAnimationFrame(() => {
+        const { pageYOffset } = window
+        const calculatedTitleOpacity = ((100 - (pageYOffset * 0.085)) / 100)
+        const calculatedScrollHintOpacity = ((100 - (pageYOffset * 0.15)) / 100)
 
-      setState(() => ({
-        backgroundImageOffset: (pageYOffset * 0.25),
-        titleOffset: -(pageYOffset * 0.4),
-        titleOpacity: (calculatedTitleOpacity > 0) ? calculatedTitleOpacity : 0,
-        scrollHintOpacity: (calculatedScrollHintOpacity > 0) ? calculatedScrollHintOpacity : 0
-      }))
+        setState(() => ({
+          backgroundImageOffset: (pageYOffset * 0.25),
+          titleOffset: -(pageYOffset * 0.4),
+          titleOpacity: (calculatedTitleOpacity > 0) ? calculatedTitleOpacity : 0,
+          scrollHintOpacity: (calculatedScrollHintOpacity > 0) ? calculatedScrollHintOpacity : 0
+        }))
+      })
     })
   }
 
