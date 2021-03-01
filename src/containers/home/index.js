@@ -25,7 +25,7 @@ export function Home({ posts }) {
         title={st("siteSubTitle")}
         onScrollHintClick={scrollHintClick} />
       <section
-        className={styles["main-content"]}
+        className={styles.content}
         ref={mainContent}>
         {posts.map(post => (
           <div key={post.slug}>

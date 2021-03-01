@@ -19,5 +19,5 @@ export function BlogPost({ metadata, source }) {
 
 BlogPost.propTypes = {
   metadata: PropTypes.object.isRequired,
-  source: PropTypes.string.isRequired
+  source: PropTypes.object.isRequired
 }

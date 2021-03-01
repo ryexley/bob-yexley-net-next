@@ -1,0 +1,55 @@
+@import "modules/colors";
+@import "modules/layout";
+
+$avatar-default: 4rem;
+$avatar-small: 2.75rem;
+
+.header {
+  background-color: rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  a {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: start;
+
+    h1, h2 {
+      @apply text-white;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 0.8rem;
+      @apply text-gray-200;
+    }
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+  height: $avatar-default;
+  width: $avatar-default;
+  transition: all 250ms ease-in-out;
+
+  &.small {
+    height: $avatar-small;
+    width: $avatar-small;
+  }
+}
+
+.text {
+  align-items: center;
+  display: grid;
+  padding: 0.5rem 1rem;
+}
+
+@media all and (min-width: $bp-large) {
+}

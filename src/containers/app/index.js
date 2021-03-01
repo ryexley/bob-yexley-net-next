@@ -2,6 +2,8 @@ import NextApp from "next/app"
 import Head from "next/head"
 import PropTypes from "prop-types"
 import { NextIntlProvider, IntlErrorCode } from "next-intl"
+import { Provider } from "react-redux"
+import { createStore } from "@/store"
 import { getTranslations } from "@/lang"
 import { Layout } from "@/containers/layout"
 
@@ -28,6 +30,8 @@ const headContentLinks = {
 }
 /* eslint-enable max-len */
 
+const store = createStore()
+
 export function App({
   Component,
   pageProps,
@@ -47,14 +51,16 @@ export function App({
           rel="stylesheet"
           href={headContentLinks.googleFonts} />
       </Head>
-      <Layout>
-        <NextIntlProvider
-          messages={translations}
-          onError={onIntlError}
-          getMessageFallback={getMessageFallback}>
-          <Component {...pageProps} />
-        </NextIntlProvider>
-      </Layout>
+      <NextIntlProvider
+        messages={translations}
+        onError={onIntlError}
+        getMessageFallback={getMessageFallback}>
+        <Provider store={store}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Provider>
+      </NextIntlProvider>
     </>
   )
 }
