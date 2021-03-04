@@ -53,18 +53,17 @@ export function Hero({
   const parallaxShift = () => {
     withWindow(window => {
       window.requestAnimationFrame(() => {
-        const { pageYOffset } = window
+        const { pageYOffset /* innerHeight (used to calculate blur) */ } = window
         const calculatedTitleOpacity = ((100 - (pageYOffset * 0.085)) / 100)
         const calculatedScrollHintOpacity = ((100 - (pageYOffset * 0.15)) / 100)
-        const calculatedBlur = 2
-        // TODO: calculate blur between 0 and 20px
+        // const calculatedBlur = (((innerHeight - (innerHeight - pageYOffset)) / 1000) * 5)
 
         setState(() => ({
           backgroundImageOffset: (pageYOffset * 0.25),
           titleOffset: -(pageYOffset * 0.4),
           titleOpacity: (calculatedTitleOpacity > 0) ? calculatedTitleOpacity : 0,
-          scrollHintOpacity: (calculatedScrollHintOpacity > 0) ? calculatedScrollHintOpacity : 0,
-          calculatedBlur
+          scrollHintOpacity: (calculatedScrollHintOpacity > 0) ? calculatedScrollHintOpacity : 0
+          // calculatedBlur
         }))
       })
     })
@@ -74,8 +73,8 @@ export function Hero({
     backgroundImageOffset,
     titleOffset,
     titleOpacity,
-    scrollHintOpacity,
-    calculatedBlur
+    scrollHintOpacity
+    // calculatedBlur
   } = state
 
   const heroInlineStyles = {

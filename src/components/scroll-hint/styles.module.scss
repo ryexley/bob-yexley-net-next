@@ -1,3 +1,4 @@
+@import "modules/colors";
 @import "modules/layout";
 
 $size: 4rem;
@@ -11,8 +12,21 @@ $size: 4rem;
   height: $size;
   left: calc(50% - 2rem);
   position: absolute;
+  transition: all 250ms ease-in-out;
   width: $size;
   z-index: 4;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.5);
+
+    .mouse-hint {
+      border-color: rgba(0, 0, 0, 0.85);
+    }
+
+    .scroll {
+      background: $color-mono-900;
+    }
+  }
 }
 
 .mouse-hint {
