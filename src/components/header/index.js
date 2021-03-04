@@ -49,6 +49,10 @@ export function Header() {
     })
   }
 
+  const headerClasses = clsx(styles.header, {
+    [styles["header--small"]]: scrolledPastSensor
+  })
+
   const avatarClasses = clsx(styles.avatar, {
     [styles["avatar--small"]]: scrolledPastSensor
   })
@@ -59,7 +63,7 @@ export function Header() {
 
   return (
     <header
-      className={styles.header}
+      className={headerClasses}
       ref={header}>
       <Link href="/">
         <a>

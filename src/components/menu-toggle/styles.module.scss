@@ -5,18 +5,22 @@ $small: 1.75rem;
 $large: 3rem;
 
 .menu-toggle {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 0.25rem;
-  color: $theme-gray;
+  color: $color-gray-600;
   height: $small;
   padding: 0.25rem;
-  transition: all 250ms ease-in-out;
+  transition: all 500ms ease-in-out;
+  transform: rotate(-180deg);
   width: $small;
 }
 
 .menu-toggle--large {
+  background: rgba(0, 0, 0, 0.25);
+  color: $theme-gray;
   height: $large;
   padding: 0.5rem;
+  transform: rotate(180deg);
   width: $large;
 }
 

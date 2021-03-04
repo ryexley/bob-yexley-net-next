@@ -79,7 +79,8 @@ p {
 }
 
 ul, ol {
-  margin: 2rem 1rem 2rem 1.5rem;
+  margin: 2rem 0;
+  padding: 0 0 0 2rem;
 }
 
 ul {
@@ -91,15 +92,18 @@ ol {
 }
 
 hr {
-  border-top: 1px solid $theme-dark-blue;
-  height: 1px;
+  background: $color-mono-0;
+  border: 2.5px solid $color-mono-100;
+  border-radius: 3.5px;
+  height: 7px;
   margin: 4rem;
 }
 
 blockquote {
   background: #F9FAFB;
-  border-left: 5px solid #BE185D;
+  border-left: 5px solid $color-pink-600;
   font-style: italic;
+  margin: 0;
   padding: 1rem;
 
   p {
