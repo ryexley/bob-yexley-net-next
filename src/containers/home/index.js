@@ -31,7 +31,7 @@ export function Home({ posts }) {
           <div key={post.slug}>
             <Link href="/[slug]" as={`/${post.slug}`}>
               <a>
-                <h1>{post.title}</h1>
+                <h2>{post.title}</h2>
                 <p>{post.blurb}</p>
                 <footer>{post.date}</footer>
               </a>

@@ -36,8 +36,8 @@ $avatar-small: 2.5rem;
 }
 
 .headings {
-  @apply text-white;
   align-items: center;
+  color: $theme-gray;
   display: grid;
   padding: 0.5rem 1rem;
 }
@@ -48,7 +48,7 @@ $avatar-small: 2.5rem;
 }
 
 .subtitle {
-  @apply text-gray-200;
+  color: $color-gray-200;
   font-size: 1rem;
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
   transition: all 250ms ease-in-out;

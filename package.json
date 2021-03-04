@@ -8,13 +8,15 @@
     "start": "next start",
     "lint": "yarn run eslint && yarn run mdlint",
     "eslint": "eslint src next.config.js --ext js,jsx",
-    "mdlint": "markdownlint \"**/*.{md,mdx}\" --ignore \"**/node_modules/**\" --ignore \"**/CHANGELOG.md\""
+    "mdlint": "markdownlint \"**/*.{md,mdx}\" --ignore \"**/node_modules/**\" --ignore \"**/CHANGELOG.md\"",
+    "new:post": "plop --plopfile ./generators/plop.js blog-post"
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.22",
     "@next/mdx": "^10.0.7",
     "@reduxjs/toolkit": "^1.5.0",
     "clsx": "^1.1.1",
+    "date-fns": "^2.18.0",
     "gray-matter": "^4.0.2",
     "lodash.throttle": "^4.1.1",
     "next": "10.0.7",
@@ -43,9 +45,9 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "markdownlint": "^0.23.1",
     "markdownlint-cli": "^0.26.0",
+    "plop": "^2.7.4",
     "postcss": "^8.2.6",
     "prop-types": "^15.7.2",
-    "sass": "^1.32.8",
-    "tailwindcss": "^2.0.3"
+    "sass": "^1.32.8"
   }
 }

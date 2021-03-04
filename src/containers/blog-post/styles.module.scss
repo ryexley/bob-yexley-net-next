@@ -1,0 +1,10 @@
+@import "modules/colors";
+
+.blog-post {
+  margin-bottom: 10rem;
+
+  h2, h3 {
+    color: $theme-blue;
+    margin: 0 0 2rem 0;
+  }
+}
