@@ -24,6 +24,10 @@ body {
   padding: 0;
 }
 
+body.main-menu--is-open {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;

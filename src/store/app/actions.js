@@ -11,3 +11,9 @@ export function layoutMounted({ mainContent }) {
     mainContent
   }
 }
+
+export function toggleMainMenu() {
+  return {
+    type: "app:toggleMainMenu"
+  }
+}

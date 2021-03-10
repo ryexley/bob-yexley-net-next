@@ -9,7 +9,8 @@ const defaultState = {
     marginLeft: 0,
     marginRight: 0,
     marginTop: 0
-  }
+  },
+  mainMenuIsOpen: false
 }
 
 export const app = reducer({
@@ -27,6 +28,15 @@ export const app = reducer({
       return {
         ...state,
         mainContent
+      }
+    },
+
+    "app:toggleMainMenu"(state) {
+      const { mainMenuIsOpen } = state
+
+      return {
+        ...state,
+        mainMenuIsOpen: !mainMenuIsOpen
       }
     }
   }

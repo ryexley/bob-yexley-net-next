@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import PropTypes from "prop-types"
 import { ScrollHint } from "@/components/scroll-hint"
 import { settings } from "@/settings"
-import { computedLayout } from "@/store/app/selectors"
+import { app } from "@/store/app/selectors"
 import { withWindow } from "@/util"
 import styles from "./styles.module.scss"
 
@@ -30,7 +30,7 @@ export function Hero({
       marginLeft,
       marginRight
     }
-  } = useSelector(computedLayout)
+  } = useSelector(app)
 
   useEffect(() => {
     withWindow(window => {

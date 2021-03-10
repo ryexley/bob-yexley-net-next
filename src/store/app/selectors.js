@@ -1,11 +1,13 @@
-export const computedLayout = ({ app }) => {
+export const app = ({ app: appState }) => {
   const {
     header,
-    mainContent
-  } = app
+    mainContent,
+    mainMenuIsOpen
+  } = appState
 
   return {
     header,
-    mainContent
+    mainContent,
+    mainMenuIsOpen
   }
 }

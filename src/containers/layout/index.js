@@ -4,8 +4,9 @@ import PropTypes from "prop-types"
 import { useSelector } from "react-redux"
 import { Icons } from "@/components/icon"
 import { Header } from "@/components/header"
+import { Menu } from "@/components/menu"
 import { layoutMounted } from "@/store/app/actions"
-import { computedLayout } from "@/store/app/selectors"
+import { app } from "@/store/app/selectors"
 import { withWindow } from "@/util"
 import styles from "./styles.module.scss"
 
@@ -18,8 +19,9 @@ export function Layout({ children }) {
     },
     mainContent: {
       marginTop
-    }
-  } = useSelector(computedLayout)
+    },
+    mainMenuIsOpen
+  } = useSelector(app)
 
   useEffect(() => {
     withWindow(window => {
@@ -39,6 +41,13 @@ export function Layout({ children }) {
     })
   }, [dispatch])
 
+  useEffect(() => {
+    withWindow(window => {
+      const action = mainMenuIsOpen ? "add" : "remove"
+      window.document.body.classList[action]("main-menu--is-open")
+    })
+  }, [mainMenuIsOpen])
+
   const mainContentStyle = {
     marginTop: `calc(${headerHeight} + ${marginTop})`
   }
@@ -47,6 +56,7 @@ export function Layout({ children }) {
     <>
       <Icons />
       <Header />
+      <Menu show={mainMenuIsOpen} />
       <main
         ref={mainContent}
         className={styles["main-content"]}

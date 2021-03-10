@@ -2,10 +2,12 @@ import { useEffect, useState, useRef } from "react"
 import { useDispatch } from "react-redux"
 import Link from "next/link"
 import clsx from "clsx"
+import throttle from "lodash.throttle"
 import { MenuToggle } from "@/components/menu-toggle"
 import { settings } from "@/settings"
 import { headerMounted } from "@/store/app/actions"
 import { withWindow } from "@/util"
+import { TIME } from "@/enums"
 import styles from "./styles.module.scss"
 
 export function Header() {
@@ -17,6 +19,15 @@ export function Header() {
   useEffect(() => {
     sensor.current = header.current.clientHeight
 
+    const checkSensor = throttle(() => {
+      withWindow(window => {
+        window.requestAnimationFrame(() => {
+          const { pageYOffset } = window
+          setScrolledPastSensor(pageYOffset > sensor.current)
+        })
+      })
+    }, TIME.ONE_HALF_SECOND)
+
     withWindow(window => {
       window.addEventListener(
         "scroll",
@@ -26,7 +37,7 @@ export function Header() {
 
     dispatch(headerMounted({
       header: {
-        height: `${header.current.clientHeight}px`
+        height: `${sensor.current}px`
       }
     }))
 
@@ -39,15 +50,6 @@ export function Header() {
       })
     }
   }, [dispatch])
-
-  const checkSensor = () => {
-    withWindow(window => {
-      window.requestAnimationFrame(() => {
-        const { pageYOffset } = window
-        setScrolledPastSensor(pageYOffset > sensor.current)
-      })
-    })
-  }
 
   const headerClasses = clsx(styles.header, {
     [styles["header--small"]]: scrolledPastSensor
