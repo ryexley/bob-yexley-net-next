@@ -1,6 +1,8 @@
 @import "modules/colors";
+@import "modules/layout";
 
-$buffer: 2rem;
+$buffer: 1rem;
+$avatar-size: 2.5rem;
 
 .menu {
   background: $color-mono-0;
@@ -15,9 +17,23 @@ $buffer: 2rem;
 
   &--is-visible {
     opacity: 1;
-    padding: $buffer;
     top: 0;
     visibility: visible;
+  }
+
+  header {
+    align-items: center;
+    border-bottom: 1px solid $color-mono-200;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-between;
+    padding: $buffer;
+
+    > div {
+      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+    }
   }
 }
 
@@ -30,10 +46,34 @@ $close-button-size: 2rem;
   cursor: pointer;
   height: $close-button-size;
   padding: 0.25rem;
-  position: absolute;
-  right: $buffer;
-  top: $buffer;
   transition: all 500ms ease-in-out;
   transform: rotate(-180deg);
   width: $close-button-size;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: $avatar-size;
+  width: $avatar-size;
+  transition: all 250ms ease-in-out;
+}
+
+.title {
+  font-size: 1.75rem;
+  margin-left: 1rem;
+}
+
+@media all and (min-width: $bp-mediumlarge) {
+  $buffer: 2rem;
+
+  .menu {
+    &--is-visible {
+      padding: $buffer;
+    }
+  }
+
+  .close-button {
+    top: $buffer;
+    right: $buffer;
+  }
 }

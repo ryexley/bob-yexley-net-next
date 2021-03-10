@@ -10,9 +10,10 @@ $avatar-large: 5rem;
   display: grid;
   grid-template-columns: repeat(2, auto);
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 1rem;
   position: fixed;
   top: 0;
+  transition: all 250ms ease-in-out;
   width: 100%;
   z-index: 2;
 
@@ -72,6 +73,14 @@ $avatar-large: 5rem;
 }
 
 @media all and (min-width: $bp-mediumlarge) {
+  .header {
+    padding: 1rem 2rem;
+
+    &--small {
+      padding: 1rem;
+    }
+  }
+
   .avatar {
     height: $avatar-large;
     width: $avatar-large;
