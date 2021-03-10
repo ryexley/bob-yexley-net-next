@@ -1,8 +1,8 @@
 @import "modules/colors";
 @import "modules/layout";
 
-$avatar-default: 5rem;
-$avatar-small: 2.5rem;
+$avatar-default: 2.5rem;
+$avatar-large: 5rem;
 
 .header {
   align-items: center;
@@ -40,8 +40,8 @@ $avatar-small: 2.5rem;
 }
 
 .avatar--small {
-  height: $avatar-small;
-  width: $avatar-small;
+  height: $avatar-default;
+  width: $avatar-default;
 }
 
 .headings {
@@ -59,8 +59,11 @@ $avatar-small: 2.5rem;
 .subtitle {
   color: $color-gray-100;
   font-size: 1rem;
+  height: 0;
+  opacity: 0;
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
   transition: all 250ms ease-in-out;
+  visibility: hidden;
 }
 
 .subtitle--hidden {
@@ -68,5 +71,26 @@ $avatar-small: 2.5rem;
   opacity: 0;
 }
 
-@media all and (min-width: $bp-large) {
+@media all and (min-width: $bp-mediumlarge) {
+  .avatar {
+    height: $avatar-large;
+    width: $avatar-large;
+  }
+
+  .avatar--small {
+    height: $avatar-default;
+    width: $avatar-default;
+  }
+
+  .subtitle {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .subtitle--hidden {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
 }
