@@ -12,6 +12,9 @@ export function Menu({ show }) {
     [styles["menu--is-visible"]]: show
   })
 
+  // TODO: handle keyboard event, and close the menu when
+  // the user presses the escape key
+
   return (
     <nav
       className={menuClasses}>

@@ -65,15 +65,25 @@ $close-button-size: 2rem;
 
 @media all and (min-width: $bp-mediumlarge) {
   $buffer: 2rem;
+  $avatar-size: 5rem;
 
   .menu {
-    &--is-visible {
-      padding: $buffer;
+    header {
+      padding: 1rem $buffer;
     }
   }
 
   .close-button {
     top: $buffer;
     right: $buffer;
+  }
+
+  .avatar {
+    height: $avatar-size;
+    width: $avatar-size;
+  }
+
+  .title {
+    font-size: 2.5rem;
   }
 }
